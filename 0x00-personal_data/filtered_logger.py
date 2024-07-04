@@ -65,7 +65,8 @@ def main():
                 zip(temp_9, row),
             )
             temp_13 = '{};'.format('; '.join(list(record)))
-            temp_14 = ("user_data", logging.INFO, None, None, temp_13, None, None)
+            temp_14 = ("user_data", logging.INFO, None,
+                       None, temp_13, None, None)
             temp_15 = logging.LogRecord(*temp_14)
             temp_11.handle(temp_15)
 
@@ -84,8 +85,10 @@ class RedactingFormatter(logging.Formatter):
 
     def format(self, record: logging.LogRecord) -> str:
         """Implement a log filter."""
-        temp_13 = super(RedactingFormatter, self).format(record)
-        temp_16 = filter_datum(self.fields, self.REDACTION, temp_13, self.SEPARATOR)
+        temp_13 = super(RedactingFormatter,
+                        self).format(record)
+        temp_16 = filter_datum(self.fields,
+                               self.REDACTION, temp_13, self.SEPARATOR)
         return temp_16
 
 
